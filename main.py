@@ -7,6 +7,7 @@ credits="""
                         |___/ 
 ADD ME ON DISCORD  The Young Mickey#0139
 OR JOIN THE DISCORD SERVER https://discord.gg/ZPXrpjUJkC
+IF YOU WANT A BETTER BOT, WE CAN PROVIDE. THIS IS FOR FREE AND NOT MUCH WORK WAS PUT INTO IT
 """
 
 
@@ -15,7 +16,7 @@ OR JOIN THE DISCORD SERVER https://discord.gg/ZPXrpjUJkC
 
 
 
-
+#ACCOUNT FILE NAMES NEED TO BE LOWERCASED
 print(credits)
 import discord,json,os,random
 from discord.ext import commands
@@ -48,7 +49,7 @@ async def gen(ctx,name=None):
     if name == None:
         await ctx.send("Specify the account you want!") # Say error if no name specified
     else:
-        name = name+".txt" #Add the .txt ext
+        name = name.lower()+".txt" #Add the .txt ext
         if name not in os.listdir("Accounts"): # If the name not in the directory
             await ctx.send(f"Account does not exist. `{prefix}stock`")
         else:
@@ -65,9 +66,9 @@ async def gen(ctx,name=None):
                     await ctx.send("Failed to send! Turn on ur direct messages")
                 else: # If it sent the account, say so then remove the account from the file
                     await ctx.send("Sent the account to your inbox!")
-                    with open(name+".txt","w") as file:
+                    with open("Accounts\\"+name,"w") as file:
                         file.write("") #Clear the file
-                    with open(name+".txt","a") as file:
+                    with open("Accounts\\"+name,"a") as file:
                         for line in lines: #Add the lines back
                             if line != account: #Dont add the account back to the file
                                 file.write(line+"\n") # Add other lines to file
