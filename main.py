@@ -39,7 +39,7 @@ async def stock(ctx):
         with open("Accounts\\"+filename) as f: # Open every file in the accounts folder
             ammount = len(f.read().splitlines()) # Get the ammount of lines
             name = (filename[0].upper() + filename[1:].lower()).replace(".txt","") #Make the name look nice
-            stockmenu.description += f"*{name}* - {ammount}" # Add to the embed
+            stockmenu.description += f"*{name}* - {ammount}\n" # Add to the embed
     await ctx.send(embed=stockmenu) # Send the embed
 
 
